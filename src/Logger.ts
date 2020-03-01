@@ -1,7 +1,8 @@
-import { LogLevel } from './LogLevel';
+// import { LogLevel } from './LogLevel';
 import { Adapter } from './Adapter';
 import { ConsoleAdapter } from './ConsoleAdapter';
 import { LogEntry, MsgType } from './Adapter';
+import { LogLevel } from './LogLevel';
 
 type LoggerConfig = {
   logLevel?: LogLevel;
@@ -15,7 +16,7 @@ class Logger {
   private adapters: Adapter[];
 
   constructor(config?: LoggerConfig | undefined) {
-    this.logLevel = config?.logLevel || LogLevel.trace;
+    this.logLevel = config?.logLevel || LogLevel.Trace;
     this.sampleRate = config?.sampleRate || 100;
     this.adapters = config?.adapters || [new ConsoleAdapter()];
   }
@@ -29,27 +30,27 @@ class Logger {
   }
 
   public trace(msg: MsgType, ...additional: any[]): void {
-    this.log(LogLevel.trace, msg, ...additional);
+    this.log(LogLevel.Trace, msg, ...additional);
   }
 
   public debug(msg: MsgType, ...additional: any[]): void {
-    this.log(LogLevel.debug, msg, ...additional);
+    this.log(LogLevel.Debug, msg, ...additional);
   }
 
   public info(msg: MsgType, ...additional: any[]): void {
-    this.log(LogLevel.info, msg, ...additional);
+    this.log(LogLevel.Info, msg, ...additional);
   }
 
   public warn(msg: MsgType, ...additional: any[]): void {
-    this.log(LogLevel.warn, msg, ...additional);
+    this.log(LogLevel.Warn, msg, ...additional);
   }
 
   public error(msg: MsgType, ...additional: any[]): void {
-    this.log(LogLevel.error, msg, ...additional);
+    this.log(LogLevel.Error, msg, ...additional);
   }
 
   public fatal(msg: MsgType, ...additional: any[]): void {
-    this.log(LogLevel.fatal, msg, ...additional);
+    this.log(LogLevel.Fatal, msg, ...additional);
   }
 
   private _log(logLevel: LogLevel, msg: MsgType, ...additional: any[]): void {

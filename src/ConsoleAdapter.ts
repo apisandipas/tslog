@@ -19,13 +19,11 @@ export class ConsoleAdapter implements Adapter {
 
     if (this.isIE) {
       this.logIE(prefix, entry.logLevel, entry.msg, entry.additional);
-
-      console.log(`${prefix} ${entry.msg}`, entry.additional);
     } else {
       const color = this.getColor(entry.logLevel);
       console.log(
         `%c  ${prefix}`,
-        `color:${color}; background-color: #282c34; padding: 0.5rem; font-family: OperatorMonoNerdFontBook; font-variant: italics;`,
+        `color:${color}; background-color: #282c34; padding: 0.5rem; font-family: sans-serif; `,
         entry.msg,
         ...entry.additional
       );
@@ -41,13 +39,13 @@ export class ConsoleAdapter implements Adapter {
     if (typeof console === 'undefined') return;
 
     switch (logLevel) {
-      case LogLevel.info:
+      case LogLevel.Info:
         console.info(prefix, msg, ...additional);
         break;
-      case LogLevel.warn:
+      case LogLevel.Warn:
         console.warn(prefix, msg, ...additional);
         break;
-      case LogLevel.error:
+      case LogLevel.Error:
         console.error(prefix, msg, ...additional);
         break;
       default:
@@ -62,17 +60,17 @@ export class ConsoleAdapter implements Adapter {
 
   private getColor(logLevel: LogLevel): string {
     switch (logLevel) {
-      case LogLevel.trace:
+      case LogLevel.Trace:
         return 'royalblue';
-      case LogLevel.debug:
+      case LogLevel.Debug:
         return 'aqua';
-      case LogLevel.info:
+      case LogLevel.Info:
         return 'gray';
-      case LogLevel.warn:
+      case LogLevel.Warn:
         return 'yellow';
-      case LogLevel.error:
+      case LogLevel.Error:
         return 'orange';
-      case LogLevel.fatal:
+      case LogLevel.Fatal:
         return 'red';
     }
   }
