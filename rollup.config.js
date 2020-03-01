@@ -5,6 +5,8 @@ import pkg from './package.json';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
+const name = 'Slog';
+
 export default {
   input: './src/index.ts',
 
@@ -31,14 +33,14 @@ export default {
     {
       file: pkg.module,
       format: 'es'
-    }
-    // {
-    //   file: pkg.browser,
-    //   format: 'iife',
-    //   name,
+    },
+    {
+      file: pkg.browser,
+      format: 'umd',
+      name,
 
-    //   // https://rollupjs.org/guide/en#output-globals-g-globals
-    //   globals: {}
-    // }
+      // https://rollupjs.org/guide/en#output-globals-g-globals
+      globals: {}
+    }
   ]
 };
