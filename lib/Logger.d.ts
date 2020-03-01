@@ -1,6 +1,6 @@
-import { LogLevel } from './LogLevel';
 import { Adapter } from './Adapter';
 import { MsgType } from './Adapter';
+import { LogLevel } from './LogLevel';
 declare type LoggerConfig = {
     logLevel?: LogLevel;
     sampleRate?: number;
