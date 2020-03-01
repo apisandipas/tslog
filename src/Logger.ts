@@ -4,6 +4,8 @@ import { ConsoleAdapter } from './ConsoleAdapter';
 import { LogEntry, MsgType } from './Adapter';
 import { LogLevel } from './LogLevel';
 
+console.log('foo');
+
 type LoggerConfig = {
   logLevel?: LogLevel;
   sampleRate?: number;
